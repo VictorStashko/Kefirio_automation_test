@@ -13,3 +13,14 @@ Feature: kefirio
     When user fills url page of "GET" "list_users" request
     And user clicks on "Відправити" button
     Then user sees "200" status code
+
+
+  @browser.headed @kefirio3
+  Scenario: User creates new user users
+    Given user open "https://symphonious-medovik-a6c3d8.netlify.app/" site
+    When user fills url page of "POST" "create" request
+    When user chooses "POST" type of the request in dd
+    And user fills body of "POST" "create" request
+    And user clicks on "Відправити" button
+    Then user sees "201" status code
+    And user sees response for creating user request
