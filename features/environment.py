@@ -1,5 +1,7 @@
 from behave import fixture, use_fixture
 from playwright.sync_api import sync_playwright
+import allure
+import os
 
 
 @fixture()
@@ -27,3 +29,13 @@ def before_tag(context, tag):
         context.cleanup = False
     else:
         context.cleanup = True
+
+
+def before_all(context):
+    if not os.path.exists("allure-results"):
+        os.makedirs("allure-results")
+
+
+def after_scenario(context, scenario):
+    for attachment in context.attachments:
+        allure.attach.file(attachment, attachment_type=allure.attachment_type.PNG)
