@@ -36,6 +36,6 @@ def before_all(context):
         os.makedirs("allure-results")
 
 
-def after_scenario(context, scenario):
-    for attachment in context.attachments:
-        allure.attach.file(attachment, attachment_type=allure.attachment_type.PNG)
+# def after_scenario(context, scenario):
+#     for attachment in context.attachments:
+#         allure.attach.file(attachment, attachment_type=allure.attachment_type.PNG)
